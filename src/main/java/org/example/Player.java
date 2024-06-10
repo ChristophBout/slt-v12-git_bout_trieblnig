@@ -2,8 +2,10 @@ package org.example;
 
 public class Player {
     private char marker;
-    public Player (char marker) {this.marker = marker;}
+    private String name;
+    public Player (char marker, String name) {this.marker = marker;this.name = name;}
     public char getMarker(){
-        return marker;
+        return this.marker;
     }
+    public String getName(){return this.name;}
 }
