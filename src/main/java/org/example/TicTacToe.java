@@ -32,19 +32,9 @@ public class TicTacToe {
                 }
             }
             board.place(row, col, currentPlayer.getMarker());
-            if (board.hasWinner()) {
-                board.print();
-                System.out.println("Player " + currentPlayer.getMarker() + " wins!");
-                break;
-            }
-            if (board.isFull()) {
-                board.print();
-                System.out.println("It's a draw!");
-                break;
-            }
+
             switchCurrentPlayer();
         }
-        scanner.close();
     }
     private void switchCurrentPlayer(){
         if (currentPlayer == player1){
