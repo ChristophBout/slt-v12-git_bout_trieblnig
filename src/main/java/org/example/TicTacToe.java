@@ -9,16 +9,30 @@ public class TicTacToe {
     private Board board;
 
     public TicTacToe(){
-        player1 = new Player('X');
-        player2 = new Player('O');
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("Enter name for Player 1 (X): ");
+        String player1Name = scanner.nextLine();
+
+        player1 = new Player('X', player1Name);
+        System.out.printf("Enter name for Player 2 (O): ");
+        String player2Name = scanner.nextLine();
+        player2 = new Player('O', player2Name);
         currentPlayer = player1;
         board = new Board();
     }
+    public void restart(){
+        board.clear();
+        start();
+    }
+    public void end(){
+        System.out.println("Thank you for playing");
+    }
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        boolean playing = true;
+        while (playing) {
             board.print();
-            System.out.println("Current Player: " + currentPlayer.getMarker());
+            System.out.println("Current Player: " + currentPlayer.getMarker()+ " "+currentPlayer.getName());
             int row, col;
             while (true) {
                 System.out.print("row (0-2): ");
@@ -33,7 +47,29 @@ public class TicTacToe {
             }
             board.place(row, col, currentPlayer.getMarker());
 
-            switchCurrentPlayer();
+            // Check for game over conditions
+            if (board.hasWinner()) {
+                board.print();
+                System.out.println("Player " + currentPlayer.getMarker() +" "+currentPlayer.getName()+ " wins!");
+                playing = false;
+            } else if (board.isFull()) {
+                board.print();
+                System.out.println("The game is a tie!");
+                playing = false;
+            } else {
+                switchCurrentPlayer();
+            }
+
+            if (!playing) {
+                System.out.print("Restart? Yes = 0 || Anything else to quit: ");
+                int restart = scanner.nextInt();
+                if (restart == 0) {
+                    restart();
+                } else {
+                    end();
+                    break;
+                }
+            }
         }
     }
     private void switchCurrentPlayer(){
