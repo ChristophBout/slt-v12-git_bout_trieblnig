@@ -14,6 +14,7 @@ public class TicTacToe {
         currentPlayer = player1;
         board = new Board();
     }
+
     public void start() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -32,9 +33,19 @@ public class TicTacToe {
                 }
             }
             board.place(row, col, currentPlayer.getMarker());
-
+            if (board.hasWinner()) {
+                board.print();
+                System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                break;
+            }
+            if (board.isFull()) {
+                board.print();
+                System.out.println("It's a draw!");
+                break;
+            }
             switchCurrentPlayer();
         }
+        scanner.close();
     }
     private void switchCurrentPlayer(){
         if (currentPlayer == player1){
