@@ -3,7 +3,7 @@ name: Branch CI
 on:
   push:
     branch:
-      - TicTacToe/**
+      - TicTacToe_project/**
 
 jobs:
   build-and-test:
