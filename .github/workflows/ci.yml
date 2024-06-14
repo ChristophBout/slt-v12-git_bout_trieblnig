@@ -1,0 +1,19 @@
+name: Branch CI
+
+on:
+  push:
+    branches:
+      - TicTacToe_project/**
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: 21
+          distribution: temurin
+      - run: mvn test --file pom.xml
