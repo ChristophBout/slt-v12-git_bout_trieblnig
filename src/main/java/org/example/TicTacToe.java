@@ -73,7 +73,7 @@ public class TicTacToe {
         }
     }
 
-    private void processPlayerMove(Scanner scanner) {
+    public void processPlayerMove(Scanner scanner) {
         int row, col;
         while (true) {
             System.out.print("row (0-2): ");

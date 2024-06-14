@@ -1,3 +1,4 @@
+
 package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -6,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
+
     private Board board;
 
     @BeforeEach
@@ -91,4 +93,7 @@ class BoardTest {
         assertFalse(board.hasWinner(), "There should be no winner in this board setup");
     }
 
+
+
 }
+
